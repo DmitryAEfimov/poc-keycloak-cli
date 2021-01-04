@@ -47,7 +47,7 @@ See [Custom Keycloak User Storage Provider](https://github.com/DmitryAEfimov/key
 
 ## Usage
 1. Open web browser and go to application page `http://<cli-app.hostname>:<cli-app.port>/`
-2. You will be redirected to Keycloak login page.
+2. You will be redirected to Keycloak login page. Login to application using `username` and `password` 
 3. After successfully login you will be redirected to application base-url `http://<cli-app.hostname>:<cli-app.port>/poc`
 4. There is a detail info about Keycloak Principal
 5. At the page's bottom you can see principal roles
