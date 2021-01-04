@@ -57,6 +57,7 @@ class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
 				accountType -> authConfig.antMatchers("/poc/access/" + accountType).hasRole(accountType.name()));
 		authConfig.anyRequest().permitAll();
 
+		http.cors().and().csrf().disable();
 		http.exceptionHandling().accessDeniedHandler(getAccessDeniedHundler());
 	}
 

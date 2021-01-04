@@ -2,21 +2,22 @@ server:
     port: 8080
 
 keycloak:
-  auth-server-url: http://localhost:7980/auth
-  realm: ExtDB
-  resource: cli-app
+  auth-server-url: # set ENV KEYCLOAK_AUTH_URL
+  realm: # set ENV KEYCLOAK_REALM_NAME
+  resource: # set ENV KEYCLOAK_CLI
   credentials:
-    secret: 6b13aa6e-25ce-43a9-8509-e0a188e76976
+    secret: # Mandatory if not public-client. set ENV KEYCLOAK_SECRET
   principal-attribute: preferred_username
+  public-client: false # default value. set ENV KEYCLOAK_PUBLIC_CLI to change
 
 spring:
   datasource:
-      driver-class-name: org.postgresql.Driver
-      url: jdbc:postgresql://localhost:5432/poc
-      username: user_adm
-      password: passwd
+    url: # set ENV DB_URL
+    username: # set ENV DB_USERNAME
+    password: # set ENV DB_PASSWORD
   jpa:
     hibernate.ddl-auto: validate
+    open-in-view: false
     properties.hibernate:
       dialect: org.hibernate.dialect.PostgreSQLDialect
       format_sql: true

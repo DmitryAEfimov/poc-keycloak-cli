@@ -45,7 +45,7 @@ public class SpaceAccount {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	@Access(value = AccessType.PROPERTY)
 	public UUID getId() {

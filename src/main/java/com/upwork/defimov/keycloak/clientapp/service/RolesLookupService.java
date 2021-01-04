@@ -19,6 +19,8 @@ import com.upwork.defimov.keycloak.clientapp.model.UserRepository;
 import com.upwork.defimov.keycloak.clientapp.service.exception.AccountTypeUnknownException;
 import com.upwork.defimov.keycloak.clientapp.service.exception.UserNotFoundException;
 
+import javax.transaction.Transactional;
+
 @Service
 public class RolesLookupService {
 	@Autowired
@@ -30,6 +32,7 @@ public class RolesLookupService {
 	@Autowired
 	private MessageSource messageSource;
 
+	@Transactional
 	public List<RoleProperties> findUserRoles(String username, AccountType accountType)
 			throws AccountTypeUnknownException, UserNotFoundException {
 		User user = findUser(username);

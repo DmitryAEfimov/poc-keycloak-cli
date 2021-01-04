@@ -48,7 +48,7 @@ public class ProAccount {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	@Access(javax.persistence.AccessType.PROPERTY)
 	public UUID getId() {
