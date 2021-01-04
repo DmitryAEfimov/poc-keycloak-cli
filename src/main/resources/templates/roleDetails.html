@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+	<meta charset="UTF-8" />
+	<title>Poc client application</title>
+	<link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div th:each="role: ${roleDetails}">
+	<h3 th:text="${role.accountType} + ': ' + ${role.name}"></h3>
+
+	<table class="styled-table">
+		<thead>
+		<tr>
+			<td>Attribute Name</td>
+			<td>Attribute Value</td>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td>Active</td>
+			<td th:text="${role.active}" />
+		</tr>
+		<tr th:if="${role.slug}">
+			<td>Slug</td>
+			<td th:text="${role.slug}" />
+		</tr>
+		<tr th:if="${role.description}">
+			<td>Description</td>
+			<td th:text="${role.description}" />
+		</tr>
+		<tr th:if="${role.settings}">
+			<td>Settings</td>
+			<td th:text="${role.settings}" />
+		</tr>
+		</tbody>
+	</table>
+</div>
+<input action="action" value="Return" type="button" onclick="history.go(-1);" />
+</body>

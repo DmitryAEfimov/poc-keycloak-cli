@@ -1,0 +1,23 @@
+server:
+    port: 8080
+
+keycloak:
+  auth-server-url: http://localhost:7980/auth
+  realm: ExtDB
+  resource: cli-app
+  credentials:
+    secret: 6b13aa6e-25ce-43a9-8509-e0a188e76976
+  principal-attribute: preferred_username
+
+spring:
+  datasource:
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://localhost:5432/poc
+      username: user_adm
+      password: passwd
+  jpa:
+    hibernate.ddl-auto: validate
+    properties.hibernate:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      format_sql: true
+      generate_statistics: false

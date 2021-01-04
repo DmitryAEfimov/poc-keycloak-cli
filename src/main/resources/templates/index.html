@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+	<meta charset="UTF-8" />
+	<title>Poc client application</title>
+	<link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<h2><span th:text="${keycloakPrincipal.keycloakSecurityContext.idToken.name}"></span></h2>
+
+<h3>Keycloak details</h3>
+<table class="styled-table">
+	<thead>
+	<tr>
+		<th>Attribute Name</th>
+		<th>Value</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Realm</td>
+		<td th:text="${keycloakPrincipal.keycloakSecurityContext.realm}"></td>
+	</tr>
+	<tr>
+		<td>Username</td>
+		<td th:text="${keycloakPrincipal.name}"></tr>
+	</tr>
+	<tr>
+		<td>Keycloak Id</td>
+		<td th:text="${keycloakPrincipal.keycloakSecurityContext.idToken.subject}"></tr>
+	</tr>
+	<tr>
+		<td>Access RAW Token</td>
+		<td th:text="${keycloakPrincipal.keycloakSecurityContext.tokenString}"></td>
+	</tr>
+	<tr>
+		<td>ID RAW Token</td>
+		<td th:text="${keycloakPrincipal.keycloakSecurityContext.idTokenString}"></td>
+	</tr>
+	</tbody>
+</table>
+
+<h3>Profiles</h3>
+<table class="styled-table">
+	<thead>
+	<tr>
+		<th>Role name</th>
+		<th>Details</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr th:each="role : ${userRoles}">
+		<td th:text="${role.name()}"></td>
+		<td><a th:href="@{/poc/access/{accountType}(accountType=${role.name()})}">Show</a></td>
+	</tr>
+	</tbody>
+</table>
+
+<form th:action="@{/logout}" method="POST">
+	<input type="submit" value="Logout" />
+</form>
+</body>
+</html>
